@@ -115,6 +115,4 @@ public class Fachada implements InterfaceCliente, InterfaceFilial, InterfaceLoca
       NegocioVeiculo nv = new NegocioVeiculo();
       nv.situacaoVeiculoLi(v);    
     }
-    
-
 }
