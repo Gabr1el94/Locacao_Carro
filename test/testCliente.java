@@ -8,7 +8,9 @@ import cliente.Cliente;
 import cliente.InterfaceCliente;
 import cliente.NegocioCliente;
 import fachada.Fachada;
+import java.util.ArrayList;
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,20 +18,19 @@ import org.junit.Test;
  *
  * @author gabrieldev
  */
+public class testCliente extends TestCase {
 
-public class testCliente extends TestCase{
-    
     private Fachada fcliente;
 
     public testCliente() {
     }
-    
-    
+
     @Before
-    public void setUp(){
+    public void setUp() {
         fcliente = new Fachada();
     }
-    
+
+    /*
     @Test
     public void testInsert() throws Exception{
         Cliente c = new Cliente();
@@ -47,7 +48,17 @@ public class testCliente extends TestCase{
         c.setCli_numero("11");
         c.setCli_bairro("Capibaribe");
         fcliente.cadastrar(c);
+    }*/
+    @Test
+    public void testSearch() throws Exception {
+        Cliente c = new Cliente();
+        c.setCli_num_doc("111.111.111-11");
+        ArrayList<Cliente> resposta = fcliente.listar(c);
+        if (resposta.size() > 0) {
+            for (Cliente al : resposta) {
+                System.out.println("" + al.getCli_num_doc());
+            }
+        }
+
     }
-    
- 
 }
