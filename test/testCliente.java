@@ -30,35 +30,57 @@ public class testCliente extends TestCase {
         fcliente = new Fachada();
     }
 
+    @Test
+    public void testInsert() throws Exception {
+        Cliente c = new Cliente();
+        c.setCli_nome("Sujeito S.A");
+        c.setCli_email("sj@sj.com");
+        c.setCli_num_doc("99.999.999/9999-99");
+        c.setCli_tipo("PJ");
+        c.setCli_cidade("Camaragibe");
+        c.setCli_estado("PE");
+        c.setCli_rua("Travessa Duque de Caxias");
+        c.setCli_telefone("(99)9999-9999");
+        c.setCli_cep("99.999-999");
+        c.setCli_numero("99");
+        c.setCli_bairro("Umuarama");
+        fcliente.cadastrar(c);
+        System.out.println("Cadastro realizado com sucesso!");
+    }
     /*
     @Test
-    public void testInsert() throws Exception{
-        Cliente c = new Cliente();
-        c.setCli_nome("Gabriel");
-        c.setCli_email("biel@biel.com");
-        c.setCli_num_doc("111.111.111-11");
-        c.setCli_tipo("PF");
-        c.setCli_cidade("São Lourenço");
-        c.setCli_estado("PE");
-        c.setCli_sexo("M");
-        c.setCli_rua("Machado de Assis");
-        c.setCli_telefone("(11)1111-1111");
-        c.setCli_dt_nascimento("11/11/1111");
-        c.setCli_cep("54.705-281");
-        c.setCli_numero("11");
-        c.setCli_bairro("Capibaribe");
-        fcliente.cadastrar(c);
-    }*/
-    @Test
-    public void testSearch() throws Exception {
-        Cliente c = new Cliente();
-        c.setCli_num_doc("111.111.111-11");
-        ArrayList<Cliente> resposta = fcliente.listar(c);
-        if (resposta.size() > 0) {
-            for (Cliente al : resposta) {
-                System.out.println("" + al.getCli_num_doc());
+        public void testSearch() throws Exception {
+            Cliente c = new Cliente();
+            c.setCli_num_doc("111.111.111-11");
+            ArrayList<Cliente> resposta = fcliente.listar(c);
+            if (resposta.size() > 0) {
+                for (Cliente al : resposta) {
+                    System.out.println("" + al.getCli_num_doc());
+                }
             }
         }
+     */
 
+ /*
+    @Test
+    public void testUpdate() throws Exception {
+        Cliente c = new Cliente();
+        c.setCli_codigo(1);
+        fcliente.buscarCliente(c);
+        if (c.getCli_codigo() > 0) {
+            c.setCli_nome("Marcos Antonio");
+            c.setCli_email("marcos@ml.com");
+            c.setCli_num_doc("63.764.376/4736-49");
+            c.setCli_tipo("PJ");
+            c.setCli_cidade("Recife");
+            c.setCli_estado("PE");
+            c.setCli_rua("Machado de Asssis");
+            c.setCli_telefone("(44)4444-4444");
+            c.setCli_cep("22.555-999");
+            c.setCli_numero("11");
+            c.setCli_bairro("Boa vista");
+            fcliente.atualizar(c);
+        }
     }
+     */
 }
