@@ -16,6 +16,7 @@ public class Relatorio extends javax.swing.JFrame {
      */
     public Relatorio() {
         initComponents();
+        btnGerar.setEnabled(false);
     }
 
     /**
@@ -27,21 +28,170 @@ public class Relatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jLabel1 = new javax.swing.JLabel();
+        jrbAlugado = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jrbCarros = new javax.swing.JRadioButton();
+        btnGerar = new javax.swing.JButton();
+        jtxtTipo = new javax.swing.JLabel();
+        jPF_PJ = new javax.swing.JComboBox<>();
+        jFormattedText_Cpf = new javax.swing.JFormattedTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jFormattedText_CNPJ = new javax.swing.JFormattedTextField();
+        jLabel18 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jrbAlugado.setText("Carros Alugados");
+        jrbAlugado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbAlugadoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("Tipos de Relatório:");
+
+        jrbCarros.setText("Carros com a Filiação");
+        jrbCarros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCarrosActionPerformed(evt);
+            }
+        });
+
+        btnGerar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnGerar.setText("Gerar");
+
+        jtxtTipo.setText("Tipo:");
+
+        jPF_PJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "PF", "PJ" }));
+        jPF_PJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPF_PJActionPerformed(evt);
+            }
+        });
+
+        try {
+            jFormattedText_Cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel4.setText("CPF:");
+
+        try {
+            jFormattedText_CNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel18.setText("CNPJ:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jrbAlugado)
+                                    .addComponent(jrbCarros)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtxtTipo)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jPF_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(4, 4, 4)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jFormattedText_Cpf)
+                                            .addComponent(jFormattedText_CNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))))))
+                        .addGap(0, 87, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jrbCarros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jrbAlugado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPF_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jFormattedText_Cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedText_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jrbCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCarrosActionPerformed
+        // TODO add your handling code here:
+        if (jrbCarros.isSelected()) {
+            btnGerar.setEnabled(true);
+            jrbAlugado.setSelected(false);
+        } else {
+            btnGerar.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_jrbCarrosActionPerformed
+
+    private void jrbAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAlugadoActionPerformed
+        // TODO add your handling code here:
+        if (jrbAlugado.isSelected()) {
+            btnGerar.setEnabled(true);
+            jrbCarros.setSelected(false);
+            jtxtTipo.setVisible(true);
+            jPF_PJ.setVisible(true);
+        } else {
+            btnGerar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jrbAlugadoActionPerformed
+
+    private void jPF_PJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPF_PJActionPerformed
+        // TODO add your handling code here:
+        if (jPF_PJ.getSelectedItem().equals("PF")) {
+            jFormattedText_Cpf.setVisible(true);
+            jFormattedText_CNPJ.setVisible(false);
+        } else if (jPF_PJ.getSelectedItem().equals("PJ")) {
+            jFormattedText_CNPJ.setVisible(true);
+            jFormattedText_Cpf.setVisible(false);
+        }
+    }//GEN-LAST:event_jPF_PJActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +229,18 @@ public class Relatorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JFormattedTextField jFormattedText_CNPJ;
+    private javax.swing.JFormattedTextField jFormattedText_Cpf;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox<String> jPF_PJ;
+    private javax.swing.JRadioButton jrbAlugado;
+    private javax.swing.JRadioButton jrbCarros;
+    private javax.swing.JLabel jtxtTipo;
     // End of variables declaration//GEN-END:variables
 }
