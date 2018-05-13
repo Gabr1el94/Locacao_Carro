@@ -5,6 +5,11 @@
  */
 package gui;
 
+import com.mysql.jdbc.Statement;
+import dados.Dados;
+import javax.swing.JOptionPane;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author gabriel
@@ -17,6 +22,9 @@ public class Relatorio extends javax.swing.JFrame {
     public Relatorio() {
         initComponents();
         btnGerar.setEnabled(false);
+        jPF_PJ.setEnabled(false);
+        jFormattedText_Cpf.setEnabled(false);
+        jFormattedText_CNPJ.setEnabled(false);
     }
 
     /**
@@ -44,7 +52,7 @@ public class Relatorio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jrbAlugado.setText("Carros Alugados");
+        jrbAlugado.setText("Carros Alugados pelo Cliente");
         jrbAlugado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbAlugadoActionPerformed(evt);
@@ -63,6 +71,11 @@ public class Relatorio extends javax.swing.JFrame {
 
         btnGerar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGerar.setText("Gerar");
+        btnGerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarActionPerformed(evt);
+            }
+        });
 
         jtxtTipo.setText("Tipo:");
 
@@ -163,6 +176,12 @@ public class Relatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jrbCarros.isSelected()) {
             btnGerar.setEnabled(true);
+            jFormattedText_CNPJ.setEnabled(false);
+            jFormattedText_Cpf.setEnabled(false);
+            jPF_PJ.setEnabled(false);
+            jPF_PJ.setSelectedIndex(0);
+            jFormattedText_CNPJ.setText("");
+            jFormattedText_Cpf.setText("");
             jrbAlugado.setSelected(false);
         } else {
             btnGerar.setEnabled(false);
@@ -173,11 +192,10 @@ public class Relatorio extends javax.swing.JFrame {
     private void jrbAlugadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAlugadoActionPerformed
         // TODO add your handling code here:
         if (jrbAlugado.isSelected()) {
-            btnGerar.setEnabled(true);
+            jPF_PJ.setEnabled(true);
             jrbCarros.setSelected(false);
-            jtxtTipo.setVisible(true);
-            jPF_PJ.setVisible(true);
         } else {
+            jPF_PJ.setEnabled(false);
             btnGerar.setEnabled(false);
         }
     }//GEN-LAST:event_jrbAlugadoActionPerformed
@@ -185,13 +203,60 @@ public class Relatorio extends javax.swing.JFrame {
     private void jPF_PJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPF_PJActionPerformed
         // TODO add your handling code here:
         if (jPF_PJ.getSelectedItem().equals("PF")) {
-            jFormattedText_Cpf.setVisible(true);
-            jFormattedText_CNPJ.setVisible(false);
+            jFormattedText_Cpf.setEnabled(true);
+            jFormattedText_CNPJ.setText("");
+            btnGerar.setEnabled(true);
+            jFormattedText_CNPJ.setEnabled(false);
         } else if (jPF_PJ.getSelectedItem().equals("PJ")) {
-            jFormattedText_CNPJ.setVisible(true);
-            jFormattedText_Cpf.setVisible(false);
+            jFormattedText_CNPJ.setEnabled(true);
+            jFormattedText_Cpf.setText("");
+            btnGerar.setEnabled(true);
+            jFormattedText_Cpf.setEnabled(false);
+        } else {
+            jFormattedText_Cpf.setEnabled(false);
+            jFormattedText_CNPJ.setText("");
+            jFormattedText_Cpf.setText("");
+            btnGerar.setEnabled(false);
+            jFormattedText_CNPJ.setEnabled(false);
         }
     }//GEN-LAST:event_jPF_PJActionPerformed
+
+    private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
+        // TODO add your handling code here:
+        String sql = null;
+        try {
+
+            if (jrbCarros.isSelected()) {
+                sql = " SELECT v.fli_CNPJ FROM Filial as f inner join Veiculo as v ";
+                sql += " on f.fli_CNPJ=v.fli_CNPJ";
+            }
+
+            if (jrbAlugado.isSelected()) {
+
+                if (jPF_PJ.equals("PF")) {
+
+                    if (jFormattedText_Cpf.getText().length() < 14) {
+                        //view Message
+                    } else {
+                        //gerar relatório
+                    }
+
+                } else if (jPF_PJ.equals("PJ")) {
+
+                    if (jFormattedText_CNPJ.getText().length() < 18) {
+                        //view Message
+                    } else {
+                        //gerar relatório
+                    }
+
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_btnGerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,16 +272,24 @@ public class Relatorio extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Relatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Relatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Relatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Relatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
